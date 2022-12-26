@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: my-deployment
+
+spec:
+  selector:
+    matchLabels:
+      app: my-web-app
+  replicas: 3
+  template:
+    metadata:
+      name: my-web-app
+      labels:
+        app: my-web-app
+
+    spec:
+      containers:
+        - image: ramodeg/ra
+          name: my-nginx-app
+          imagePullPolicy: IfNotPresent
+          ports: 
+             - containerPort: 80
+         
